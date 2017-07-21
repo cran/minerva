@@ -17,7 +17,7 @@
 statistics. \code{mine} computes the MINE family measures between two variables. 
 }
 \usage{mine(x, y=NULL, master=NULL, alpha=0.6, C=15, n.cores=1,
-var.thr=1e-5, eps=NULL, na.rm=FALSE, use="all.obs", ...)}
+var.thr=1e-5, eps=NULL, est="mic_approx", na.rm=FALSE, use="all.obs",  ...)}
 \arguments{
   \item{x}{ a numeric vector (of size \emph{n}), matrix or data frame (which is coerced 
     to matrix). }
@@ -49,15 +49,19 @@ var.thr=1e-5, eps=NULL, na.rm=FALSE, use="all.obs", ...)}
     but the default choice is the most appropriate parametrization
     for general cases (as stated in Reshef et al. SOM).
     It provides robustness. }
+  \item{est}{Default value is "mic_approx". With est="mic_approx" the original MINE statistics will
+        be computed, with est="mic_e" the equicharacteristic matrix is
+        is evaluated and the mic() and tic() methods will return MIC_e and
+        TIC_e values respectively.}
   \item{na.rm}{boolean. This variable is passed directly to the
 	\code{cor}-based functions. See \code{cor} for further details.}
   \item{use}{Default value is "all.obs". This variable is passed directly to the
-	\code{cor}-based functions. See \code{cor} for further details.}
+    \code{cor}-based functions. See \code{cor} for further details.}
   
 \item{\dots}{ currently not used. }
 } 
 \details{\code{mine} is an R wrapper for the C engine \emph{cmine} 
-(\url{http://mpba.fbk.eu/cmine}), 
+(\url{http://minepy.readthedocs.io/en/latest/}), 
 an implementation of Maximal Information-Based Nonparametric Exploration (MINE) 
 statistics. The MINE statistics were firstly detailed in 
 D. Reshef et al. (2011) \emph{Detecting novel associations in large datasets}. 
@@ -147,8 +151,6 @@ obtain a solution closer to the theoretical one.
   (SOM: Supplementary Online Material at
   \url{http://www.sciencemag.org/content/suppl/2011/12/14/334.6062.1518.DC1})
   
-  \url{http://mpba.fbk.eu/cmine}
-
   \emph{minepy. Maximal Information-based Nonparametric Exploration in C and Python.}\cr 
   \url{http://minepy.sourceforge.net}
   }
