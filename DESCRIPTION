@@ -1,10 +1,10 @@
 Package: minerva
-Version: 1.4.7
-Date: 2017-07-05
+Version: 1.5
+Date: 2018-11-30
 Title: Maximal Information-Based Nonparametric Exploration for Variable
         Analysis
 Authors@R: c(person("Michele", "Filosi", role = c("aut","cre" ), email
-        = "michele.filosi@unitn.it"), person("Roberto", "Visintainer", role =
+        = "michele.filosi@gmail.com"), person("Roberto", "Visintainer", role =
         "aut", email = "roberto.visintainer@unitn.eu"), person("Davide",
         "Albanese", role = "aut", email = "davide.albanese@fmach.it"),
         person("Samantha", "Riccadonna", role = "ctb", email =
@@ -12,7 +12,8 @@ Authors@R: c(person("Michele", "Filosi", role = c("aut","cre" ), email
         "ctb", email = "jurman@fbk.eu"), person("Cesare", "Furlanello",
         role = "ctb", email = "furlan@fbk.eu"))
 Depends: R (>= 2.14.0)
-Imports: parallel
+Imports: parallel, Rcpp, stats
+LinkingTo: Rcpp
 Suggests: testthat
 Description: Wrapper for 'minepy' implementation of Maximal
         Information-based Nonparametric Exploration statistics (MIC and
@@ -21,11 +22,16 @@ Description: Wrapper for 'minepy' implementation of Maximal
 URL: https://www.r-project.org, http://minepy.readthedocs.io/en/latest,
         http://www.exploredata.net
 License: GPL-3
-Packaged: 2017-07-20 16:01:49 UTC; michele
-Author: Michele Filosi [aut, cre], Roberto Visintainer [aut], Davide
-        Albanese [aut], Samantha Riccadonna [ctb], Giuseppe Jurman
-        [ctb], Cesare Furlanello [ctb]
-Maintainer: Michele Filosi <michele.filosi@unitn.it>
+Packaged: 2018-12-14 10:23:18 UTC; michele
+Author: Michele Filosi [aut, cre],
+  Roberto Visintainer [aut],
+  Davide Albanese [aut],
+  Samantha Riccadonna [ctb],
+  Giuseppe Jurman [ctb],
+  Cesare Furlanello [ctb]
+Maintainer: Michele Filosi <michele.filosi@gmail.com>
 Repository: CRAN
-Date/Publication: 2017-07-21 09:41:34 UTC
+Date/Publication: 2018-12-14 12:20:12 UTC
+RoxygenNote: 6.1.1
+Encoding: UTF-8
 NeedsCompilation: yes
