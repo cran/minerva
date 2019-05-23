@@ -11,7 +11,7 @@ statistics. \code{mine} computes the MINE family measures between two variables.
 \usage{
 mine(x, y = NULL, master = NULL, alpha = 0.6, C = 15,
   n.cores = 1, var.thr = 1e-05, eps = NULL, est = "mic_approx",
-  na.rm = FALSE, use = "all.obs", ...)
+  na.rm = FALSE, use = "all.obs", normalization = FALSE, ...)
 }
 \arguments{
 \item{x}{a numeric vector (of size \emph{n}), matrix or data frame (which is coerced to matrix).}
@@ -24,7 +24,10 @@ either one column index to be used as reference for the comparison
 (versus all other columns) or a vector of column indices to be used for 
 computing all mutual statistics.}
 
-\item{alpha}{an optional number of cells allowed in the \emph{X-by-Y} search-grid. Default value is 0.6 (see Details).}
+\item{alpha}{float (0, 1.0] or >=4 if alpha is in (0,1] then B will be max(n^alpha, 4) where n is the
+number of samples. If alpha is >=4 then alpha defines directly the B
+parameter. If alpha is higher than the number of samples (n) it will be
+limited to be n, so B = min(alpha, n) Default value is 0.6 (see Details).}
 
 \item{C}{an optional number determining the starting point of the 
 \emph{X-by-Y} search-grid. When trying to partition the \emph{x}-axis into 
@@ -57,6 +60,9 @@ TIC_e values respectively.}
 
 \item{use}{Default value is "all.obs". This variable is passed directly to the 
 \code{cor}-based functions. See \code{cor} for further details.}
+
+\item{normalization}{logical whether to use normalization when computing \code{tic} measure. Ignored for other measures.
+Default to FALSE.}
 
 \item{\dots}{currently ignored}
 }
