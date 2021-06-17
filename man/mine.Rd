@@ -9,9 +9,21 @@
 Maximal Information-Based Nonparametric Exploration (MINE) 
 statistics. \code{mine} computes the MINE family measures between two variables.}
 \usage{
-mine(x, y = NULL, master = NULL, alpha = 0.6, C = 15,
-  n.cores = 1, var.thr = 1e-05, eps = NULL, est = "mic_approx",
-  na.rm = FALSE, use = "all.obs", normalization = FALSE, ...)
+mine(
+  x,
+  y = NULL,
+  master = NULL,
+  alpha = 0.6,
+  C = 15,
+  n.cores = 1,
+  var.thr = 1e-05,
+  eps = NULL,
+  est = "mic_approx",
+  na.rm = FALSE,
+  use = "all.obs",
+  normalization = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{a numeric vector (of size \emph{n}), matrix or data frame (which is coerced to matrix).}
@@ -265,7 +277,7 @@ E. Lander, M. Mitzenmacher, P. Sabeti. (2011)
 Science 334, 6062\cr
 \url{http://www.exploredata.net}\cr
 (SOM: Supplementary Online Material at
-  \url{http://www.sciencemag.org/content/suppl/2011/12/14/334.6062.1518.DC1})
+  \url{https://science.sciencemag.org/content/suppl/2011/12/14/334.6062.1518.DC1})
 
 D. Albanese, M. Filosi, R. Visintainer, S. Riccadonna, G. Jurman,
 C. Furlanello. 

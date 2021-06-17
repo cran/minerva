@@ -5,6 +5,7 @@ R package for Maximal Information-Based Nonparametric Exploration computation
 
 * Minepy [Homepage](http://minepy.readthedocs.io/en/latest/)
 * Minepy [Github](https://github.com/minepy/minepy)
+* Mictools [Github](https://github.com/minepy/mictools)
 
 
 ## Install
@@ -14,7 +15,7 @@ install.packages("minerva")
 ```
 * Development version
 ```r
-devtools::install_github('rsamantha/minerva')
+devtools::install_github('filosi/minerva')
 ```
 
 ## Usage
@@ -36,6 +37,20 @@ x <- 0:200 / 200
 y <- sin(10 * pi * x) + x
 mine_stat(x, y, measure="mic")
 ```
+
+-  To compute the `mic-r2` measure use the `cor` R function:
+
+```r
+x <- 0:200 / 200
+y <- sin(10 * pi * x) + x
+
+r2 <- cor(x, y)
+mm <- mine_stat(x, y, measure="mic")
+mm - r2**2
+
+## mine(x, y, n.cores=1)[[5]]
+```
+
 ### Compute statistic on matrices
 
 -  All features in a single matrix (`mine_compute_pstat`).
@@ -67,7 +82,7 @@ header=TRUE, row.names=1, as.is=TRUE, stringsAsFactors=FALSE)
 datasaurus.m <- t(datasaurus)
 ```
 
-### Compute null distribution for tic_e
+### Compute null distribution for `tic_e`
 
 Automatically compute:
 
@@ -78,41 +93,47 @@ Automatically compute:
 -  P-value for each variable pair association.
 
 ```r
-ticnull <- mictools(datasaurus.m, nperm=100000, seed=1234)
+ticnull <- mictools(datasaurus.m, nperm=10000, seed=1234)
 
 ## Get the names of the named list
 names(ticnull)
 ##[1]  "tic"      "nulldist" "obstic"   "obsdist"  "pval"
-str(ticnull)
 
-ticnull$nulldist
-ticnull$obsdist
+
 ```
 
 ##### Null Distribution
 
+```r
+ticnull$nulldist
+```
+
 | BinStart| BinEnd| NullCount| NullCumSum|
 |--------:|------:|---------:|----------:|
-|    0e+00|      0|         0|      1e+05|
-|    1e-04|      0|         0|      1e+05|
-|    2e-04|      0|         0|      1e+05|
-|    3e-04|      0|         0|      1e+05|
-|    4e-04|      0|         0|      1e+05|
-|    5e-04|      0|         0|      1e+05|
+|    0e+00|  1e-04|         0|      1e+05|
+|    1e-04|  2e-04|         0|      1e+05|
+|    2e-04|  3e-04|         0|      1e+05|
+|    3e-04|  4e-04|         0|      1e+05|
+|    4e-04|  5e-04|         0|      1e+05|
+|    5e-04|  6e-04|         0|      1e+05|
 | ...     | ...   |    ....  |   ....    |
 
 
 
 ##### Observed distribution
 
+```r
+ticnull$obsdist
+```
+
 | BinStart| BinEnd| Count| CountCum|
 |--------:|------:|-----:|--------:|
-|    0e+00|      0|     0|      325|
-|    1e-04|      0|     0|      325|
-|    2e-04|      0|     0|      325|
-|    3e-04|      0|     0|      325|
-|    4e-04|      0|     0|      325|
-|    5e-04|      0|     0|      325|
+|    0e+00|  1e-04|     0|      325|
+|    1e-04|  2e-04|     0|      325|
+|    2e-04|  3e-04|     0|      325|
+|    3e-04|  4e-04|     0|      325|
+|    4e-04|  5e-04|     0|      325|
+|    5e-04|  6e-04|     0|      325|
 | ...     | ...   | .... | ....    |
 
 

@@ -4,8 +4,7 @@
 \alias{mic_strength}
 \title{Compute the association strengh}
 \usage{
-mic_strength(x, pval, alpha = NULL, C = 5, pthr = 0.05,
-  pval.col = NULL)
+mic_strength(x, pval, alpha = NULL, C = 5, pthr = 0.05, pval.col = NULL)
 }
 \arguments{
 \item{x}{a numeric matrix with N samples on the rows and M variables on the columns (NxM).}
@@ -35,7 +34,7 @@ This function uses the null distribution of the \code{tic_e} computed with the f
 Based on the available pvalue and the permutation null distribution it identifies reliable association between variables.
 }
 \details{
-The method implemented here is a wrapper for the original method published by Albaese et al. (2018). The python version
+The method implemented here is a wrapper for the original method published by Albanese et al. (2018). The python version
 is available at \url{https://github.com/minepy/mictools}.
 
 This function should be called after the estimation of the null distribution of \code{tic_e} scores based on permutations of the input data.
@@ -57,7 +56,7 @@ mydata <- as.matrix(Spellman[, 10:20])
 ticenull <- mictools(mydata, nperm=1000)
 
 ## Use the nominal pvalue:
-ms <- mic_strength(mydata, pval=ticenull$pval, alpha=NULL, pval.col = c(6, 4,5))
+ms <- mic_strength(mydata, pval=ticenull$pval, alpha=NULL, pval.col = c(1, 4,5))
 
 ## Use the adjusted pvalue:
 ms <- mic_strength(mydata, pval=ticenull$pval, alpha=NULL, pval.col = c(6, 4,5))
